@@ -12,6 +12,20 @@ export default class InputForm extends Component {
         }
         this.props.resetPianoKey()
     }
+    // state = {
+    //     id: '',
+    //     name: '',
+    //     notes: ''
+    // }
+    // componentDidMount = () => {
+    //     let {id, name, notes} = this.props.defaultValue
+    //     this.setState ({
+    //                 id: id,
+    //                 name: name,
+    //                 notes: notes
+    //             })
+    //     this.props.resetPianoKey()
+    // }
     handleChange = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -21,11 +35,13 @@ export default class InputForm extends Component {
     componentDidUpdate = () => {
         console.log(this.props)
 
-        this.props.pianoKey !== '' && 
+        if (this.props.pianoKey !== '') {
             this.setState((state, props) => ({
-                notes: state.notes.concat(`${props.pianoKey} `)
+                
+                notes: state.notes.concat(`${this.props.pianoKey} `)
             }))
             this.props.resetPianoKey()
+        }
     }
 
     handleSubmit = event => {
