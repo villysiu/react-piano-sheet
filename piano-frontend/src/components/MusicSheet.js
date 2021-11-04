@@ -11,7 +11,7 @@ const MusicSheet = (props) => {
 
     return(
          <div id="music_sheet">
-           { location.state ? <h4>{location.state.msg}</h4> : null }
+           { location.state && <h4>{location.state.msg}</h4> }
              <div>
                  {music.name}
                 <Link to={ `/musics/${music.id}/edit` } ><button type="button" >Edit</button></Link>
