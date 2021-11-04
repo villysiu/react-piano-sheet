@@ -9,14 +9,15 @@ const Note = (props) => {
     let bgcolor = (keys.find(({note}) => note === props.note) || {}).color || 'clear' 
 
     return (
-        (bgcolor !== 'clear') ? 
+        <>
+        { bgcolor !== 'clear' && 
          <span className={note} 
             style={{
               gridColumn: column,
               backgroundColor: bgcolor
             }} />
-        : 
-        null
+        }
+        </>
     )
 }
 export default Note;
