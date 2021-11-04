@@ -1,32 +1,36 @@
 import React, {Component} from "react";
 
 export default class InputForm extends Component {
-    constructor(props) {
-        super(props);
-        let {id, name, notes} = this.props.defaultValue
-    
-        this.state = {
-            id: id,
-            name: name,
-            notes: notes
-        }
-        this.props.resetPianoKey()
-    }
-    // state = {
-    //     id: '',
-    //     name: '',
-    //     notes: ''
-    // }
-    // componentDidMount = () => {
+    // constructor(props) {
+    //     super(props);
     //     let {id, name, notes} = this.props.defaultValue
-    //     this.setState ({
-    //                 id: id,
-    //                 name: name,
-    //                 notes: notes
-    //             })
+    
+    //     this.state = {
+    //         id: id,
+    //         name: name,
+    //         notes: notes
+    //     }
     //     this.props.resetPianoKey()
+    //     this.handleChange=this.handleChange.bind(this)
     // }
-    handleChange = event => {
+    state = {
+        id: '',
+        name: '',
+        notes: ''
+    }
+    componentDidMount = () => {
+        let {id, name, notes} = this.props.defaultValue
+        this.setState ({
+                    id: id,
+                    name: name,
+                    notes: notes
+                })
+        this.props.resetPianoKey()
+        
+    }
+
+    handleChange = (event) => {
+    // handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -34,10 +38,9 @@ export default class InputForm extends Component {
 
     componentDidUpdate = () => {
         console.log(this.props)
-
+    
         if (this.props.pianoKey !== '') {
-            this.setState((state, props) => ({
-                
+            this.setState((state) => ({
                 notes: state.notes.concat(`${this.props.pianoKey} `)
             }))
             this.props.resetPianoKey()
