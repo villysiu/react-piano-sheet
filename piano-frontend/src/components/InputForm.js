@@ -21,9 +21,12 @@ export default class InputForm extends Component {
     componentDidUpdate = () => {
         console.log(this.props)
     if (this.props.pianoKey !== '') {
-        this.setState({
-            notes: this.state.notes.concat(`${this.props.pianoKey} `) 
-        })
+        // this.setState({
+        //     notes: this.state.notes.concat(`${this.props.pianoKey} `) 
+        // })
+        this.setState((state, props) => ({
+            notes: state.notes.concat(`${props.pianoKey} `)
+        }))
         this.props.resetPianoKey()
     }
     else {
