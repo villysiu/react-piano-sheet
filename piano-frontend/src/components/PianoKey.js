@@ -8,9 +8,6 @@ class PianoKey extends Component {
   }
 
   hanleMouseDown = (n) => {
-    // this.setState(() => {
-    //   return { color: 'grey' }
-    // })
     this.setState({
        color: 'grey' 
     })
